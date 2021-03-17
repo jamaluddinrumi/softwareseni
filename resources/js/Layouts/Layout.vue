@@ -146,7 +146,7 @@
             <v-menu transition="slide-y-transition">
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn icon v-bind="attrs" v-on="on" class="mx-2">
-                        <v-avatar size="24">
+                        <v-avatar size="24" rounded>
                             <img
                                 :src="$page.props.user.profile_photo_url"
                                 :alt="$page.props.user.name"
@@ -157,7 +157,7 @@
                 <v-list rounded>
                     <v-list>
                         <v-list-item>
-                            <v-list-item-avatar>
+                            <v-list-item-avatar rounded>
                                 <v-img
                                     :src="$page.props.user.profile_photo_url"
                                     :alt="$page.props.user.name"
