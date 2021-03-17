@@ -88,20 +88,27 @@ export default {
     components: {
         CountryFlag,
         JetAuthenticationCardLogo,
-        JetAuthenticationCardLogoDark
+        JetAuthenticationCardLogoDark,
     },
 
     props: {
         loading: {
-            type: Boolean
-        }
+            type: Boolean,
+        },
     },
 
     data() {
         return {
-            backgroundImage: `url('${this.$page.props.appUrl}/img/healthy-food.jpg')`,
-            title: ""
+            title: "",
         };
+    },
+
+    computed: {
+        backgroundImage: function () {
+            return this.$vuetify.theme.dark
+                ? `url('${this.$page.props.appUrl}/img/healthy-food-dark.jpg')`
+                : `url('${this.$page.props.appUrl}/img/healthy-food.jpg')`;
+        },
     },
 
     methods: {
@@ -124,7 +131,7 @@ export default {
 
             axios
                 .post(`/lang/${this.$i18n.locale}`)
-                .then(function(response) {
+                .then(function (response) {
                     console.log(response);
 
                     self.title = route().current();
@@ -136,12 +143,12 @@ export default {
                             translationTitle ?? _.capitalize(self.title);
                     }
                 })
-                .catch(function(error) {
+                .catch(function (error) {
                     console.error(error);
                 })
-                .then(function() {});
-        }
-    }
+                .then(function () {});
+        },
+    },
 };
 </script>
 
